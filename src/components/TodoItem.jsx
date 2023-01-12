@@ -11,7 +11,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Paper } from "@mui/material";
 import EditTodoDialog from "./EditTodoDialog";
 
-export default function TodoItem(props) {
+export default function TodoItem({ item }) {
 
   return (
     <>
@@ -28,7 +28,7 @@ export default function TodoItem(props) {
             <ListItemIcon>
               <Checkbox edge="start" tabIndex={-1} disableRipple />
             </ListItemIcon>
-            <ListItemText primary={props.item.texto} />
+            <ListItemText primary={item.texto} />
           </ListItemButton>
         </ListItem>
       </Paper>
