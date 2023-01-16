@@ -4,7 +4,7 @@ import Form from "../components/Form";
 import TodoItem from "../components/TodoItem";
 
 export default function Home() {
-
+  
   const [tarefas, setTarefas] = useState([]);
 
   const adicionaTarefa = (tarefa) => {
@@ -13,7 +13,7 @@ export default function Home() {
   }
   
   const apagaTarefa = (id) => {
-    var filtrado = tarefas.filter((tarefa) => tarefa.id !== id);
+    const filtrado = tarefas.filter((tarefa) => tarefa.id !== id);
     setTarefas(filtrado);
   }
 

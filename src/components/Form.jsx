@@ -7,28 +7,33 @@ export default function Form({ adicionaTarefa }) {
 
   const [id, setId] = useState(0);
 
-  const objetoTarefa = (texto) => {
-    const objeto = {texto: texto, id: id};
+  const objetoTarefa = (e) => {
+    e.preventDefault();
+    const objeto = { texto: texto, id: id };
     setId(id + 1);
     adicionaTarefa(objeto);
+    setTexto("");
   }
 
   return (
     <Paper style={{ padding: "1em" }}>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <form style={{ display: "flex", justifyContent: "center" }} onSubmit={objetoTarefa}>
         <TextField
           id="outlined-basic"
           label="Tarefa"
           variant="outlined"
           onChange={(e) => setTexto(e.target.value)}
+          value={texto}
           fullWidth
         />
-        <Button variant="text"
-          onClick={() => { objetoTarefa(texto) }}
+        <Button
+          variant="text"
+          id="botao-add"
+          type="submit"
         >
           ADD
         </Button>
-      </div>
+      </form>
     </Paper>
   );
 }

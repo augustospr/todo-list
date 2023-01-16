@@ -18,7 +18,7 @@ export default function TodoItem({ tarefa, apagaTarefa }) {
       <Paper style={{ padding: "0.5em 0em" }}>
         <ListItem
           secondaryAction={
-            <IconButton edge="end" aria-label="delete" onClick={() => {apagaTarefa(tarefa.id)}}>
+            <IconButton edge="end" aria-label="delete" id="botaoEnter" onClick={() => {apagaTarefa(tarefa.id)}}>
               <DeleteIcon  />
             </IconButton>
           }
