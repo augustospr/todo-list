@@ -7,21 +7,29 @@ export default function Home() {
 
   const [tarefas, setTarefas] = useState([]);
 
-  const adicionadorTarefas = (item) => {
-    setTarefas([...tarefas, item]);
-   // console.log(texto);
-  };
+  const adicionaTarefa = (tarefa) => {
+    setTarefas([...tarefas, tarefa]);
+    console.log(tarefa);
+  }
+  
+  const apagaTarefa = (id) => {
+    var filtrado = tarefas.filter((tarefa) => tarefa.id !== id);
+    setTarefas(filtrado);
+  }
 
   return (
     <Container maxWidth="xs" style={{ marginTop: "1em" }}>
-      <Form adicionadorTarefas={adicionadorTarefas} />
+
+      <Form adicionaTarefa={adicionaTarefa} />
+
       <List sx={{ marginTop: "1em" }}>
-        {tarefas.map((item, key) => (
-          <div key={key} style={{ marginTop: "0,5em" }}>
-            <TodoItem item={item} />
+        {tarefas.map(tarefa => (
+          <div key={tarefa.id} style={{ marginTop: "0.7em" }}>
+            <TodoItem tarefa={tarefa} apagaTarefa={apagaTarefa} />
           </div>
         ))}
       </List>
+
     </Container>
   );
 }

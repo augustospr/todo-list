@@ -1,15 +1,16 @@
 import { Button, Paper, TextField } from "@mui/material";
 import React, { useState } from "react";
 
-export default function Form({ adicionadorTarefas }) {
+export default function Form({ adicionaTarefa }) {
 
-  const [texto, setTexto] = useState('');
+  const [texto, setTexto] = useState("");
+
   const [id, setId] = useState(0);
 
-  const transformaEmObjeto = (texto) => {
-    const objetoTarefa = {texto: texto, id: id}
+  const objetoTarefa = (texto) => {
+    const objeto = {texto: texto, id: id};
     setId(id + 1);
-    adicionadorTarefas(objetoTarefa);
+    adicionaTarefa(objeto);
   }
 
   return (
@@ -22,7 +23,9 @@ export default function Form({ adicionadorTarefas }) {
           onChange={(e) => setTexto(e.target.value)}
           fullWidth
         />
-        <Button variant="text" onClick={() => {transformaEmObjeto(texto)}}> 
+        <Button variant="text"
+          onClick={() => { objetoTarefa(texto) }}
+        >
           ADD
         </Button>
       </div>

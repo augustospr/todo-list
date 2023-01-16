@@ -11,15 +11,15 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Paper } from "@mui/material";
 import EditTodoDialog from "./EditTodoDialog";
 
-export default function TodoItem({ item }) {
+export default function TodoItem({ tarefa, apagaTarefa }) {
 
   return (
     <>
       <Paper style={{ padding: "0.5em 0em" }}>
         <ListItem
           secondaryAction={
-            <IconButton edge="end" aria-label="delete">
-              <DeleteIcon />
+            <IconButton edge="end" aria-label="delete" onClick={() => {apagaTarefa(tarefa.id)}}>
+              <DeleteIcon  />
             </IconButton>
           }
           disablePadding
@@ -28,7 +28,7 @@ export default function TodoItem({ item }) {
             <ListItemIcon>
               <Checkbox edge="start" tabIndex={-1} disableRipple />
             </ListItemIcon>
-            <ListItemText primary={item.texto} />
+            <ListItemText primary={tarefa.texto} />
           </ListItemButton>
         </ListItem>
       </Paper>
