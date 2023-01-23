@@ -9,7 +9,6 @@ export default function Home() {
 
   const adicionaTarefa = (tarefa) => {
     setTarefas([...tarefas, tarefa]);
-    console.log(tarefa);
   }
   
   const apagaTarefa = (id) => {
