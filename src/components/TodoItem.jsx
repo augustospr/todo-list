@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -11,12 +11,21 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Paper } from "@mui/material";
 import EditTodoDialog from "./EditTodoDialog";
 
-export default function TodoItem({ tarefa, removeTarefa }) {
+export default function TodoItem({ tarefa, removeTarefa, editaTarefa }) {
 
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <>
-      <EditTodoDialog />
+      <EditTodoDialog open={open} handleClickOpen={handleClickOpen} handleClose={handleClose} tarefa={tarefa} editaTarefa={editaTarefa} />
       <Paper style={{ padding: "0.5em 0em" }}>
         <ListItem
           secondaryAction={
@@ -30,7 +39,7 @@ export default function TodoItem({ tarefa, removeTarefa }) {
             <ListItemIcon>
               <Checkbox edge="start" tabIndex={-1} disableRipple />
             </ListItemIcon>
-            <ListItemText primary={tarefa.texto} />
+            <ListItemText onClick={handleClickOpen} primary={tarefa.texto} />
           </ListItemButton>
         </ListItem>
       </Paper>

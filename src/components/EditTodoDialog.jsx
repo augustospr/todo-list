@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from "react";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -7,22 +7,17 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-export default function FormDialog() {
-  const [open, setOpen] = React.useState(false);
+export default function FormDialog({ open, handleClickOpen, handleClose, tarefa, editaTarefa }) {
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  const [trocaTarefa, setTrocaTarefa] = useState(tarefa.texto);
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const editaTexto = () => {
+    editaTarefa(tarefa.id, trocaTarefa);
+    handleClose();
+  }
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open form dialog
-      </Button>
       <Dialog open={open} onClose={handleClose} fullWidth>
         <DialogTitle>Editar tarefa</DialogTitle>
         <DialogContent >
@@ -30,15 +25,16 @@ export default function FormDialog() {
             autoFocus
             margin="dense"
             id="name"
-            label="Tarefa"
+            defaultValue={trocaTarefa}
             type="text"
+            onChange={(e) => setTrocaTarefa(e.target.value)}
             fullWidth
             variant="standard"
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancelar</Button>
-          <Button onClick={handleClose}>Ok</Button>
+          <Button onClick={editaTexto}>Ok</Button>
         </DialogActions>
       </Dialog>
     </div>
