@@ -4,27 +4,27 @@ import Form from "../components/Form";
 import TodoItem from "../components/TodoItem";
 
 export default function Home() {
-  
+
   const [tarefas, setTarefas] = useState([]);
 
-  const adicionaTarefa = (tarefa) => {
+  const criaTarefas = (tarefa) => {
     setTarefas([...tarefas, tarefa]);
   }
-  
-  const apagaTarefa = (id) => {
-    const filtrado = tarefas.filter((tarefa) => tarefa.id !== id);
-    setTarefas(filtrado);
+
+  const removeTarefa = (id) => {
+    const objetoFiltrado = tarefas.filter(item => item.id !== id);
+    setTarefas(objetoFiltrado);
   }
 
   return (
     <Container maxWidth="xs" style={{ marginTop: "1em" }}>
 
-      <Form adicionaTarefa={adicionaTarefa} />
+      <Form criaTarefas={criaTarefas} />
 
       <List sx={{ marginTop: "1em" }}>
         {tarefas.map(tarefa => (
           <div key={tarefa.id} style={{ marginTop: "0.7em" }}>
-            <TodoItem tarefa={tarefa} apagaTarefa={apagaTarefa} />
+            <TodoItem tarefa={tarefa} removeTarefa={removeTarefa} />
           </div>
         ))}
       </List>

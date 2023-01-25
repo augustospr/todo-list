@@ -1,17 +1,16 @@
 import { Button, Paper, TextField } from "@mui/material";
 import React, { useState } from "react";
 
-export default function Form({ adicionaTarefa }) {
+export default function Form({ criaTarefas }) {
 
   const [texto, setTexto] = useState("");
-
   const [id, setId] = useState(0);
 
   const objetoTarefa = (e) => {
     e.preventDefault();
-    const objeto = { texto: texto, id: id };
+    const objeto = {texto: texto, id: id};
     setId(id + 1);
-    adicionaTarefa(objeto);
+    criaTarefas(objeto);
     setTexto("");
   }
 

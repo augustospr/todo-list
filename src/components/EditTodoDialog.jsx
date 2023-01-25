@@ -1,46 +1,46 @@
-// import * as React from "react";
-// import Button from "@mui/material/Button";
-// import Dialog from "@mui/material/Dialog";
-// import DialogActions from "@mui/material/DialogActions";
-// import DialogContent from "@mui/material/DialogContent";
-// import DialogContentText from "@mui/material/DialogContentText";
-// import DialogTitle from "@mui/material/DialogTitle";
-// import Slide from "@mui/material/Slide";
-// import { TextField } from "@mui/material";
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
-// const Transition = React.forwardRef(function Transition(props, ref) {
-//   return <Slide direction="up" ref={ref} {...props} />;
-// });
+export default function FormDialog() {
+  const [open, setOpen] = React.useState(false);
 
-// export default function EditTodoDialog({ open, dialogHandler, todo, editTodo }) {
-//   const [editedText, setEditedText] = React.useState(todo.text);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
-//   const textHandler = () => {
-//     editTodo(todo.id, editedText);
-//     dialogHandler();
-//   };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
-//   return (
-//     <Dialog
-//       open={open}
-//       TransitionComponent={Transition}
-//       keepMounted
-//       onClose={dialogHandler}
-//       aria-describedby="alert-dialog-slide-description"
-//       fullWidth
-//     >
-//       <DialogTitle>{"Editando TAREFAAAA"}</DialogTitle>
-//       <DialogContent>
-//         <TextField
-//           defaultValue={editedText}
-//           fullWidth
-//           onChange={(e) => setEditedText(e.target.value)}
-//         />
-//       </DialogContent>
-//       <DialogActions>
-//         <Button onClick={dialogHandler}>Cancelar</Button>
-//         <Button onClick={textHandler}>Ok</Button>
-//       </DialogActions>
-//     </Dialog>
-//   );
-// }
+  return (
+    <div>
+      <Button variant="outlined" onClick={handleClickOpen}>
+        Open form dialog
+      </Button>
+      <Dialog open={open} onClose={handleClose} fullWidth>
+        <DialogTitle>Editar tarefa</DialogTitle>
+        <DialogContent >
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Tarefa"
+            type="text"
+            fullWidth
+            variant="standard"
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancelar</Button>
+          <Button onClick={handleClose}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+  );
+}
