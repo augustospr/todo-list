@@ -20,11 +20,10 @@ export default function Home() {
     const arrayTarefas = [...tarefas];
 
     for (var i in arrayTarefas) {
-      if (arrayTarefas[i].id == id) {
-        arrayTarefas[i].text = novoTexto;
+      if (arrayTarefas[i].id === id) {
+        arrayTarefas[i].texto = novoTexto;
       }
     }
-
     setTarefas(arrayTarefas);
   };
 
