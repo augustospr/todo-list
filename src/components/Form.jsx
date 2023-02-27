@@ -1,28 +1,29 @@
 import { Button, Paper, TextField } from "@mui/material";
 import React, { useState } from "react";
 
-export default function Form({ criaTarefas }) {
+export default function Form({ addTodos }) {
 
-  const [texto, setTexto] = useState("");
+  const [text, setText] = useState("");
+
   const [id, setId] = useState(0);
 
-  const objetoTarefa = (e) => {
+  const todoHandler = (e) => {
     e.preventDefault();
-    const objeto = {texto: texto, id: id};
+    const obj = { text: text, id: id };
+    addTodos(obj);
     setId(id + 1);
-    criaTarefas(objeto);
-    setTexto("");
+    setText("");
   }
 
   return (
     <Paper style={{ padding: "1em" }}>
-      <form style={{ display: "flex", justifyContent: "center" }} onSubmit={objetoTarefa}>
+      <form style={{ display: "flex", justifyContent: "center" }} onSubmit={todoHandler}>
         <TextField
           id="outlined-basic"
           label="Tarefa"
           variant="outlined"
-          onChange={(e) => setTexto(e.target.value)}
-          value={texto}
+          onChange={(e) => setText(e.target.value)}
+          value={text}
           fullWidth
         />
         <Button

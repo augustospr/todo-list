@@ -5,38 +5,37 @@ import TodoItem from "../components/TodoItem";
 
 export default function Home() {
 
-  const [tarefas, setTarefas] = useState([]);
+  const [todos, setTodos] = useState([]);
 
-  const criaTarefas = (tarefa) => {
-    setTarefas([...tarefas, tarefa]);
+  const addTodos = (todo) => {
+    console.log(todo);
+    setTodos([...todos, todo]);
   }
 
-  const removeTarefa = (id) => {
-    const objetoFiltrado = tarefas.filter(item => item.id !== id);
-    setTarefas(objetoFiltrado);
+  const deleteTodos = (id) => {
+    const filtered = todos.filter(item => item.id !== id);
+    setTodos(filtered);
   }
 
-  const editaTarefa = (id, novoTexto) => {
-    const arrayTarefas = [...tarefas];
-
-    for (var i in arrayTarefas) {
-      if (arrayTarefas[i].id === id) {
-        arrayTarefas[i].texto = novoTexto;
+  const editTodos = (newText, id) => {
+    const newArray = [...todos];
+    for (var i in newArray) {
+      if (newArray[i].id === id) {
+        newArray[i].text = newText;
       }
     }
-    setTarefas(arrayTarefas);
-  };
-
+    setTodos(newArray);
+  }
 
   return (
     <Container maxWidth="md" style={{ marginTop: "1em" }}>
 
-      <Form criaTarefas={criaTarefas} />
+      <Form addTodos={addTodos} />
 
       <List sx={{ marginTop: "1em" }}>
-        {tarefas.map(tarefa => (
-          <div key={tarefa.id} style={{ marginTop: "0.7em" }}>
-            <TodoItem tarefa={tarefa} removeTarefa={removeTarefa} editaTarefa={editaTarefa} />
+        {todos.map(todo => (
+          <div key={todo.id} style={{ marginTop: "0.7em" }}>
+            <TodoItem todo={todo} deleteTodos={deleteTodos} editTodos={editTodos} />
           </div>
         ))}
       </List>

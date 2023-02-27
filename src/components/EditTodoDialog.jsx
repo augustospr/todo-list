@@ -6,12 +6,12 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
-export default function FormDialog({ open, handleClose, tarefa, editaTarefa }) {
+export default function FormDialog({ open, handleClose, todo, editTodos }) {
 
-  const [trocaTarefa, setTrocaTarefa] = useState(tarefa.texto);
+  const [newText, setNewText] = useState(todo.text);
 
-  const editaTexto = () => {
-    editaTarefa(tarefa.id, trocaTarefa);
+  const sendNewText = () => {
+    editTodos(newText, todo.id);
     handleClose();
   }
 
@@ -24,16 +24,16 @@ export default function FormDialog({ open, handleClose, tarefa, editaTarefa }) {
             autoFocus
             margin="dense"
             id="name"
-            defaultValue={trocaTarefa}
+            defaultValue={newText}
             type="text"
-            onChange={(e) => setTrocaTarefa(e.target.value)}
+            onChange={(e) => setNewText(e.target.value)}
             fullWidth
             variant="standard"
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancelar</Button>
-          <Button onClick={editaTexto}>Ok</Button>
+          <Button onClick={sendNewText}>Ok</Button>
         </DialogActions>
       </Dialog>
     </div>
