@@ -9,7 +9,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Paper } from "@mui/material";
 import EditTodoDialog from "./EditTodoDialog";
 
-export default function TodoItem({ todo, deleteTodos, editTodos }) {
+export default function TodoItem({ todo, removeTodo, editTodo }) {
 
   const [open, setOpen] = useState(false);
 
@@ -21,17 +21,17 @@ export default function TodoItem({ todo, deleteTodos, editTodos }) {
     setOpen(false);
   };
 
-  const getId = () => {
-    deleteTodos(todo.id);
+  const sendId = () => {
+    removeTodo(todo.id);
   }
 
   return (
     <>
-      <EditTodoDialog open={open} handleClickOpen={handleClickOpen} handleClose={handleClose} editTodos={editTodos} todo={todo}/>
+      <EditTodoDialog open={open} handleClickOpen={handleClickOpen} handleClose={handleClose} todo={todo} editTodo={editTodo} />
       <Paper style={{ padding: "0.5em 0em" }}>
         <ListItem
           secondaryAction={
-            <IconButton edge="end" aria-label="delete" id="botaoEnter" onClick={getId}>
+            <IconButton edge="end" aria-label="delete" id="botaoEnter" onClick={sendId}>
               <DeleteIcon />
             </IconButton>
           }
