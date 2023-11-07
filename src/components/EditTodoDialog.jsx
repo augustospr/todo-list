@@ -25,8 +25,8 @@ export default function FormDialog({ open, handleClose, todo, editTodo }) {
             margin="dense"
             id="name"
             defaultValue={newText}
-            type="text"
             onChange={(e) => setNewText(e.target.value)}
+            type="text"
             fullWidth
             variant="standard"
           />
