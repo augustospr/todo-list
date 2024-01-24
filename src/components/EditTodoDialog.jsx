@@ -6,13 +6,13 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
-export default function FormDialog({ open, handleClose, todo, editTodo }) {
+export default function FormDialog({ open, handleClose, editItem, item }) {
 
-  const [newText, setNewText] = useState(todo.text);
+  const [newText, setNewText] = useState(item.text);
 
   const sendNewText = () => {
-    editTodo(newText, todo.id);
     handleClose();
+    editItem(newText, item.id);
   }
 
   return (

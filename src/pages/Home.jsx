@@ -7,16 +7,16 @@ export default function Home() {
 
   const [todos, setTodos] = useState([]);
 
-  const addTodo = (todo) => {
+  const addItem = (todo) => {
     setTodos([...todos, todo]);
   }
 
-  const removeTodo = (id) => {
-    const filtered = todos.filter(todo => todo.id !== id);
+  const deleteItem = (id) => {
+    const filtered = todos.filter(item => (item.id !== id));
     setTodos(filtered);
   }
 
-  const editTodo = (newText, id) => {
+  const editItem = (newText, id) => {
     const newArray = [...todos];
     for (var i in newArray) {
       if (newArray[i].id === id) {
@@ -29,13 +29,13 @@ export default function Home() {
   return (
     <Container maxWidth="md" style={{ marginTop: "1em" }}>
 
-      <Form addTodo={addTodo} />
+      <Form addItem={addItem} />
 
       <List sx={{ marginTop: "1em" }}>
 
-        {todos.map(todo => (
-          <div key={todo.id} style={{ marginTop: "0.7em" }}>
-            <TodoItem todo={todo} removeTodo={removeTodo} editTodo={editTodo} />
+        {todos.map(item => (
+          <div key={item.id} style={{ marginTop: "0.7em" }}>
+            <TodoItem item={item} deleteItem={deleteItem} editItem={editItem} />
           </div>
         ))}
 

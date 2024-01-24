@@ -1,23 +1,26 @@
 import { Button, Paper, TextField } from "@mui/material";
 import React, { useState } from "react";
 
-export default function Form({ addTodo }) {
+export default function Form({ addItem }) {
 
   const [text, setText] = useState("");
 
   const [id, setId] = useState(0);
 
-  const objTodo = (e) => {
+  const sendText = (e) => {
     e.preventDefault();
-    const obj = { text: text, id: id };
+    const obj = {
+      text: text,
+      id: id
+    }
     setId(id + 1);
-    addTodo(obj);
+    addItem(obj);
     setText("");
   }
 
   return (
     <Paper style={{ padding: "1em" }}>
-      <form style={{ display: "flex", justifyContent: "center" }} onSubmit={objTodo}>
+      <form style={{ display: "flex", justifyContent: "center" }} onSubmit={sendText}>
         <TextField
           id="outlined-basic"
           label="Tarefa"
