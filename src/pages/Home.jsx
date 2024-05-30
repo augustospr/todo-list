@@ -7,18 +7,18 @@ export default function Home() {
 
   const [todos, setTodos] = useState([]);
 
-  const addItem = (todo) => {
-    setTodos([...todos, todo]);
-  }
+  const addItem = (data) => {
+    setTodos([...todos, data]);
+  };
 
   const deleteItem = (id) => {
     const filtered = todos.filter(item => (item.id !== id));
     setTodos(filtered);
-  }
+  };
 
   const editItem = (newText, id) => {
     const newArray = [...todos];
-    for (var i in newArray) {
+    for (let i = 0; i < newArray.length; i++) {
       if (newArray[i].id === id) {
         newArray[i].text = newText;
       }

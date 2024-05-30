@@ -10,10 +10,10 @@ export default function FormDialog({ open, handleClose, editItem, item }) {
 
   const [newText, setNewText] = useState(item.text);
 
-  const sendNewText = () => {
-    handleClose();
+  const newData = () => {
     editItem(newText, item.id);
-  }
+    handleClose();
+  };
 
   return (
     <div>
@@ -33,7 +33,7 @@ export default function FormDialog({ open, handleClose, editItem, item }) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancelar</Button>
-          <Button onClick={sendNewText}>Ok</Button>
+          <Button onClick={newData}>Ok</Button>
         </DialogActions>
       </Dialog>
     </div>

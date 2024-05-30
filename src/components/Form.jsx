@@ -4,15 +4,11 @@ import React, { useState } from "react";
 export default function Form({ addItem }) {
 
   const [text, setText] = useState("");
-
   const [id, setId] = useState(0);
 
-  const sendText = (e) => {
+  const sendData = (e) => {
     e.preventDefault();
-    const obj = {
-      text: text,
-      id: id
-    }
+    const obj = { text: text, id: id };
     setId(id + 1);
     addItem(obj);
     setText("");
@@ -20,7 +16,7 @@ export default function Form({ addItem }) {
 
   return (
     <Paper style={{ padding: "1em" }}>
-      <form style={{ display: "flex", justifyContent: "center" }} onSubmit={sendText}>
+      <form style={{ display: "flex", justifyContent: "center" }} onSubmit={sendData}>
         <TextField
           id="outlined-basic"
           label="Tarefa"

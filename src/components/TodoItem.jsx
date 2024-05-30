@@ -21,17 +21,13 @@ export default function TodoItem({ item, deleteItem, editItem }) {
     setOpen(false);
   };
 
-  const sendId = () => {
-    deleteItem(item.id);
-  }
-
   return (
     <>
       <EditTodoDialog open={open} handleClickOpen={handleClickOpen} handleClose={handleClose} editItem={editItem} item={item} />
       <Paper style={{ padding: "0.5em 0em" }}>
         <ListItem
           secondaryAction={
-            <IconButton edge="end" aria-label="delete" id="botaoEnter" onClick={sendId}>
+            <IconButton edge="end" aria-label="delete" id="botaoEnter" onClick={() => deleteItem(item.id)}>
               <DeleteIcon />
             </IconButton>
           }
